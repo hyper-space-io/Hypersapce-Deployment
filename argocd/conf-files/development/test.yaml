@@ -3,6 +3,8 @@ global:
   project: development
   ecr_repository: 418316469434.dkr.ecr.eu-central-1.amazonaws.com
 data-node:
+  externalSecret:
+    enabled: false
   replicaCount: 1
   image:
     pullPolicy: Always
