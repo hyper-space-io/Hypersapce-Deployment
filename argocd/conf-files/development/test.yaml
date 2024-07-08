@@ -5,7 +5,7 @@ global:
 data-node:
   externalSecret:
     enabled: false
-  replicaCount: 0
+  replicaCount: 1
   image:
     pullPolicy: Always
   config:
