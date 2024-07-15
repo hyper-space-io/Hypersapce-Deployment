@@ -41,6 +41,16 @@ search-master:
     log_level: DEBUG
     restore: false
     commit_timeout: 120000
+  ingress:
+    hosts:
+      - host: test.forter.hyper-space.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+          - path: /api/v1/([^/]+)/document/add
+            pathType: Prefix
+          - path: /api/v1/([^/]+)/batch
+            pathType: Prefix
 etcd-backup:
   schedule_cron: 0 13 * * *
   image:
