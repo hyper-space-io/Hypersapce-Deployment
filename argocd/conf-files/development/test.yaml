@@ -35,13 +35,6 @@ realtime-compiler:
 search-master:
   ingress:
     className: "nginx-external"
-  image:
-    pullPolicy: Always
-  config:
-    log_level: DEBUG
-    restore: false
-    commit_timeout: 120000
-  ingress:
     hosts:
       - host: test.forter.hyper-space.xyz
         paths:
@@ -51,6 +44,12 @@ search-master:
             pathType: Prefix
           - path: /api/v1/([^/]+)/batch
             pathType: Prefix
+  image:
+    pullPolicy: Always
+  config:
+    log_level: DEBUG
+    restore: false
+    commit_timeout: 120000
 etcd-backup:
   schedule_cron: 0 13 * * *
   image:
