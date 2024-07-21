@@ -54,6 +54,7 @@ etcd-backup:
   schedule_cron: 0 13 * * *
   role_arn: arn:aws:iam::471112693898:role/hyperspace-etcd-backup-development-role
   image:
+    repository: 418316469434.dkr.ecr.eu-west-1.amazonaws.com/etcd-backup
     pullPolicy: Always
     tag: latest
   etcdBackup:
