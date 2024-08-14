@@ -58,7 +58,7 @@ etcd-backup:
     pullPolicy: Always
     tag: latest
   etcdBackup:
-    enabled: true
+    enabled: false
 etcd:
   fullnameOverride: etcd-test
 redis:
