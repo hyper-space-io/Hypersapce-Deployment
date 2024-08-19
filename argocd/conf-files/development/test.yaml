@@ -1,10 +1,7 @@
 global:
   environment: development
   project: development
-  ecr_repository: 418316469434.dkr.ecr.eu-central-1.amazonaws.com
 data-node:
-  externalSecret:
-    enabled: false
   replicaCount: 0
   image:
     pullPolicy: Always
@@ -12,7 +9,7 @@ data-node:
     log_level: DEBUG
     restore_from_rocksdb: true
   ebsVolume:
-    enabled: false
+    enabled: true
   priorityClass:
     enabled: false
   serviceAccount:
@@ -33,17 +30,6 @@ realtime-compiler:
   image:
     pullPolicy: Always
 search-master:
-  ingress:
-    className: "nginx-external"
-    hosts:
-      - host: test.forter.hyper-space.xyz
-        paths:
-          - path: /
-            pathType: Prefix
-          - path: /api/v1/([^/]+)/document/add
-            pathType: Prefix
-          - path: /api/v1/([^/]+)/batch
-            pathType: Prefix
   image:
     pullPolicy: Always
   config:
@@ -52,11 +38,9 @@ search-master:
     commit_timeout: 120000
 etcd-backup:
   schedule_cron: 0 13 * * *
+  role_arn: arn:aws:iam::471112693898:role/hyperspace-etcd-backup-development-role
   etcdBackup:
     enabled: false
-etcd:
-  fullnameOverride: etcd-test
 redis:
-  fullnameOverride: redis-test
   master:
     count: 0
