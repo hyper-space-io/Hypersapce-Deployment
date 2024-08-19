@@ -26,7 +26,7 @@ spec:
             valueFiles: 
               - $values/argocd/conf-files/{{ .Values.environment }}/{{`{{name}}`}}.yaml
         - repoURL: https://github.com/{{ .Values.ORG_NAME }}/{{ .Values.Deployment_Repo }}.git
-          targetRevision: argocd
+          targetRevision: master
           ref: values
       syncPolicy:
         automated:
