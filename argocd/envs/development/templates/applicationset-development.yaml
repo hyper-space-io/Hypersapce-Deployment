@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ .Values.environment }}-deployment
+spec:
+  generators:
+  - list:
+      elements:
+      - name: test
+        targetRevision: 1.1.125
+  template:
+    metadata:
+      name: 'hyperspace-{{`{{name}}`}}'
+      namespace: argocd
+    spec:
+      destination:
+        namespace: '{{`{{name}}`}}'
+        server: https://kubernetes.default.svc
+      project: {{ .Values.environment }}
+      sources:
+        - chart: hyperspace
+          path: hyperspace
+          repoURL: "{{ .Values.ECR_REPO }}"
+          targetRevision: '{{`{{targetRevision}}`}}'
+          helm:
+            valueFiles: 
+              - $values/argocd/conf-files/{{ .Values.environment }}/{{`{{name}}`}}.yaml
+        - repoURL: https://github.com/{{ .Values.ORG_NAME }}/{{ .Values.Deployment_Repo }}.git
+          targetRevision: master
+          ref: values
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - RespectIgnoreDifferences=true
+          - CreateNamespace=true
+      ignoreDifferences:
+        - kind: Secret
+          jsonPointers:
+          - /data
+        - kind: StatefulSet
+          group: apps
+          jqPathExpressions:
+          - .spec.template.metadata.annotations["checksum/token-secret"]
