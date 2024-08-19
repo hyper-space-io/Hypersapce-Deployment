@@ -30,6 +30,8 @@ realtime-compiler:
   image:
     pullPolicy: Always
 search-master:
+  ingress:
+    className: "nginx-external"
   image:
     pullPolicy: Always
   config:
