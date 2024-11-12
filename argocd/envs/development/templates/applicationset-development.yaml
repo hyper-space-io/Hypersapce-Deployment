@@ -7,7 +7,7 @@ spec:
   - list:
       elements:
       - name: test
-        targetRevision: 1.1.180
+        targetRevision: 1.1.250
   template:
     metadata:
       name: 'hyperspace-{{`{{name}}`}}'
@@ -40,6 +40,6 @@ spec:
           jsonPointers:
           - /data
         - kind: StatefulSet
-          group: apps
+          group: apps 
           jqPathExpressions:
           - .spec.template.metadata.annotations["checksum/token-secret"]
