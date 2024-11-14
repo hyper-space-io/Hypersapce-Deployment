@@ -2,7 +2,7 @@ global:
   environment: forter
   project: development
 data-node:
-  replicaCount: 0
+  replicaCount: 1
   image:
     pullPolicy: Always
   config:
