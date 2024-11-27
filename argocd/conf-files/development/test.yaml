@@ -2,9 +2,12 @@ global:
   environment: forter
   project: development
 data-node:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::418316469434:role/hyperspace-boto3-development-us-role
   replicaCount: 0
   image:
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   config:
     log_level: DEBUG
     restore_from_rocksdb: true
@@ -12,8 +15,6 @@ data-node:
     enabled: true
   priorityClass:
     enabled: false
-  serviceAccount:
-    create: false
   hugePages:
     enabled: true
     numOfHugePages: 100
