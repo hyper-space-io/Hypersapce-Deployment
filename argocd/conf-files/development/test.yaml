@@ -4,7 +4,7 @@ global:
 data-node:
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::418316469434:role/hyperspace-boto3-development-us-role
+      eks.amazonaws.com/role-arn: arn:aws:iam::337450623971:role/hyperspace-dev-idan-EC2TagsPolicy
   replicaCount: 1
   image:
     tag: latest
