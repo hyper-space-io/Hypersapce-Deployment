@@ -5,8 +5,9 @@ data-node:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::418316469434:role/hyperspace-boto3-development-us-role
-  replicaCount: 0
+  replicaCount: 1
   image:
+    tag: latest
     pullPolicy: IfNotPresent
   config:
     log_level: DEBUG
@@ -26,14 +27,17 @@ data-node:
     periodSeconds: 10
 compiler-service:
   image:
+    tag: latest
     pullPolicy: Always
 realtime-compiler:
   image:
+    tag: latest
     pullPolicy: Always
 search-master:
   ingress:
     className: "nginx-external"
   image:
+    tag: latest
     pullPolicy: Always
   config:
     log_level: DEBUG
