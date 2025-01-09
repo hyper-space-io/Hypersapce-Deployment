@@ -1,11 +1,11 @@
 global:
-  environment: forter
+  environment: dev-idan
   project: development
 data-node:
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: arn:aws:iam::337450623971:role/hyperspace-dev-idan-EC2TagsPolicy
-  replicaCount: 0
+  replicaCount: 1
   image:
     tag: latest
     pullPolicy: IfNotPresent
