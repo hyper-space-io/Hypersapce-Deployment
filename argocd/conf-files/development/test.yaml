@@ -35,7 +35,7 @@ realtime-compiler:
     pullPolicy: Always
 search-master:
   ingress:
-    className: "nginx-external"
+    className: "nginx-internal"
   image:
     tag: latest
     pullPolicy: Always

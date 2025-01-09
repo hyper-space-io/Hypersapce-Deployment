@@ -7,7 +7,7 @@ spec:
   - list:
       elements:
       - name: test
-        targetRevision: 1.1.250
+        targetRevision: 1.1.401
   template:
     metadata:
       name: 'hyperspace-{{`{{name}}`}}'
