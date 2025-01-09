@@ -36,6 +36,15 @@ realtime-compiler:
 search-master:
   ingress:
     className: "nginx-internal"
+    hosts:
+      - host: test.internal-dev-idan.hyper-space.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+          - path: /api/v1/([^/]+)/document/add
+            pathType: Prefix
+          - path: /api/v1/([^/]+)/batch
+            pathType: Prefix
   image:
     tag: latest
     pullPolicy: Always
